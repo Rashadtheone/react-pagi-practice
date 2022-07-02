@@ -8,7 +8,7 @@ function App() {
   //creating state with fake data
   const [users, setUsers] = useState(data.slice(0,30))
   //creating state to handle page updates
-  const [pageNumber, setPage] = useState(0)
+  const [pageNumber, setPageNumber] = useState(0)
 
   const usersPerPage = 10
   const pagesVisited = pageNumber * usersPerPage
@@ -23,12 +23,27 @@ function App() {
     )
   })
 
+  const pageCount = Math.ceil(users.length / usersPerPage);
+
+  const changePage = ({selected}) => {
+    setPageNumber(selected)
+  }
 
   return (
     <div className="App">
       {/*mapping the data to the page using the map function, using the json data*/}
 
      {displayUsers}
+     <ReactPaginate 
+      previousLabel={"Previous"}
+      nextLabel={"Next"}
+      pageCount={pageCount}
+      onPageChange={changePage}
+      containerClassName={"paginationbttns"}
+      nextLinkClassName={"nextBttn"}
+      disabledLinkClassName={"paginationDisabled"}
+      activeClassName={"paginationActive"}
+     />
 
     </div>
   );

@@ -36,6 +36,26 @@
   height: 300px;
 }
 
+.paginationbttns{
+  background-color: white;
+  width: 80%;
+  height: 40px;
+  color: red;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationbttns a {
+  padding:10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid blue;
+  color: blue;
+  cursor: pointer;
+  
+}
+
 
 @keyframes App-logo-spin {
   from {
