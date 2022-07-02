@@ -7,22 +7,28 @@ function App() {
 
   //creating state with fake data
   const [users, setUsers] = useState(data.slice(0,30))
+  //creating state to handle page updates
+  const [pageNumber, setPage] = useState(0)
+
+  const usersPerPage = 10
+  const pagesVisited = pageNumber * usersPerPage
+
+  const displayUsers = users.slice(pagesVisited, pagesVisited + usersPerPage).map((user) => {
+    return (
+      <div className="user">     
+          <h3>{user.first_name}</h3>
+          <h3>{user.last_name}</h3>
+          <h3>{user.email}</h3>
+      </div>
+    )
+  })
 
 
   return (
     <div className="App">
-      
-      {users.map((user)=> {
+      {/*mapping the data to the page using the map function, using the json data*/}
 
-        return (
-          <div className="user">     
-              <h3>{user.first_name}</h3>
-              <h3>{user.last_name}</h3>
-              <h3>{user.email}</h3>
-          </div>
-        )
-      })
-      }
+     {displayUsers}
 
     </div>
   );
